@@ -8,7 +8,8 @@ def line(current_line)
     puts "The line is currently empty."
   else
     string = "The line is currently:"
-    current_line.each_with_index do |customer, place|
+    place = 0
+    current_line.each do |customer|
       place += 1
       string << " #{place}. #{customer}"
     end
@@ -16,16 +17,16 @@ def line(current_line)
   end
 end
 
-def take_a_number(current_line, name)
-  if current_line == []
-    current_line << "#{name}"
-    puts "Welcome, #{name}. You are number 1 in line."
-  else
-    current_line << "#{name}"
-    greeting_name = current_line[-1]
-    puts "Welcome, #{greeting_name}. You are number 4 in line."
-  end
+$counter = 0
+def take_a_number
+  $counter += 1
+    puts "You are number #{$counter} in line."
 end
+
+puts take_a_number
+puts take_a_number
+puts take_a_number
+
 
 def now_serving(current_line)
   if current_line == []
@@ -34,5 +35,5 @@ def now_serving(current_line)
     name = current_line[0]
     puts "Currently serving #{name}."
   end
-  new_current_line = current_line.shift
+  current_line.shift
 end
